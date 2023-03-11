@@ -1,3 +1,13 @@
+import Navbar from "./components/Navbar";
+import AppBackground from "./components/Background/AppBackground";
+import AppNavigator from "./AppNavigator";
+
 export default function App() {
-  return <h1 className="text-3xl font-bold underline">Hello world!</h1>;
+  return (
+    <div className="isolate bg-white">
+      <AppBackground />
+      <Navbar />
+      <AppNavigator />
+    </div>
+  );
 }

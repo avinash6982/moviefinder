@@ -5,9 +5,12 @@ import { Provider } from "react-redux";
 import { persistStore } from "redux-persist";
 import { PersistGate } from "redux-persist/integration/react";
 import reportWebVitals from "./reportWebVitals";
+import { QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
 
 import App from "./App";
 import store from "./redux/store";
+import queryClient from "./QueryClient";
 
 import "./index.css";
 
@@ -19,9 +22,12 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
+        <QueryClientProvider client={queryClient}>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+          <ReactQueryDevtools position="bottom-right" initialIsOpen={false} />
+        </QueryClientProvider>
       </PersistGate>
     </Provider>
   </React.StrictMode>

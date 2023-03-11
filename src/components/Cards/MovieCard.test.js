@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
-import HomeScreen from ".";
+import MovieCard from "./MovieCard";
 
 test("renders learn react link", () => {
-  render(<HomeScreen />);
-  screen.getByText("Home");
+  render(<MovieCard />);
+  screen.getByTestId("thumb-image");
 });

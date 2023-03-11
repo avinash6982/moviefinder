@@ -1,9 +1,9 @@
 import React from "react";
 
-const SearchInput = ({ onSubmit }) => {
+const SearchInput = ({ text, onSubmit }) => {
   return (
     <form
-      className="w-4/5"
+      className="w-full"
       onSubmit={(e) => {
         e.preventDefault();
         onSubmit(e.target[0].value);

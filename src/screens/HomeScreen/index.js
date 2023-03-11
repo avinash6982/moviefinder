@@ -61,7 +61,7 @@ const HomeScreen = () => {
 
   return (
     <main>
-      <div class="flex flex-row my-4">
+      <div className="flex flex-row my-4">
         <div className="mx-auto w-3/4">
           <SearchInput text={searchText} onSubmit={debouncedResults} />
         </div>

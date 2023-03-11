@@ -13,12 +13,12 @@ import storage from "redux-persist/lib/storage";
 
 import appStateReducer from "./appState";
 import discoverReducer from "./discover";
-import watchlistReducer from "./watchlist";
+import myListReducer from "./myList";
 
 const rootReducer = combineReducers({
   appState: appStateReducer,
   discover: discoverReducer,
-  watchlist: watchlistReducer,
+  myList: myListReducer,
 });
 
 const persistConfig = {

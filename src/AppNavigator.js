@@ -2,8 +2,8 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 
 import HomeScreen from "./screens/HomeScreen";
-import Watchlist from "./screens/Watchlist";
 import PageNotFound from "./screens/PageNotFound";
+import MyList from "./screens/MyList";
 
 const appRoutes = [
   {
@@ -11,8 +11,8 @@ const appRoutes = [
     component: <HomeScreen />,
   },
   {
-    path: "watchlist",
-    component: <Watchlist />,
+    path: "mylist",
+    component: <MyList />,
   },
 ];
 

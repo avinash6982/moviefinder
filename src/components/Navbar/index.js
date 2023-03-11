@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
-  const { items } = useSelector((state) => state.watchlist);
+  const { items } = useSelector((state) => state.myList);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -23,17 +23,17 @@ const Navbar = () => {
         </div>
         <div className="flex lg:flex-1">
           <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-            {location.pathname === "/" ? "Home" : "Watchlist"}
+            {location.pathname === "/" ? "Home" : "My List"}
           </a>
         </div>
         <div className="justify-end">
           <button
-            onClick={() => navigate("watchlist")}
+            onClick={() => navigate("mylist")}
             type="button"
             className="relative inline-flex items-center p-3 text-sm font-medium text-center text-black rounded-lg"
           >
             <BsBookmark size={25} />
-            <span className="sr-only">Watchlist</span>
+            <span className="sr-only">My List</span>
             <div className="absolute inline-flex items-center justify-center w-6 h-6 text-sm font-bold text-white bg-red-500 border-white rounded-full -top-2 -right-2 dark:border-gray-900">
               {items.length}
             </div>

@@ -5,7 +5,7 @@ const SortOptionButton = ({ setSortOption, sortOptions }) => (
     <select
       onChange={(e) => setSortOption(e.target.value)}
       id="countries"
-      class="bg-light border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+      className="bg-light border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
     >
       <option onClick={() => setSortOption("")} selected>
         Sort by

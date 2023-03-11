@@ -23,5 +23,5 @@ test("renders learn react link", () => {
       </BrowserRouter>
     </Provider>
   );
-  screen.getByText("Watchlist");
+  screen.getByText("My List");
 });

@@ -7,12 +7,13 @@ const Navbar = () => {
   const { items } = useSelector((state) => state.watchlist);
   const navigate = useNavigate();
   const location = useLocation();
+
   return (
     <div className="px-6 pt-6 lg:px-8">
       <nav className="flex items-center justify-between" aria-label="Global">
         <div className="flex lg:flex-1">
           <a onClick={() => navigate("/")} className="-m-1.5 p-1.5">
-            <span className="sr-only">Stocks</span>
+            <span className="sr-only">Movies</span>
             <img
               className="h-8"
               src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"

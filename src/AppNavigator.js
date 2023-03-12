@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import HomeScreen from "./screens/HomeScreen";
 import PageNotFound from "./screens/PageNotFound";
 import MyList from "./screens/MyList";
-import MovieDetails from "./screens/MovieDetails"
+import MovieDetails from "./screens/MovieDetails";
 
 const appRoutes = [
   {

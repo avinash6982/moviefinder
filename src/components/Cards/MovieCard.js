@@ -39,9 +39,9 @@ const MovieCard = ({ isListScreen, ...props }) => {
         </div>
       )}
 
-{/* Clicking image takes to movie page */}
+      {/* Clicking image takes to movie page */}
       <img
-      onClick={() => navigate(`/movie/${props.id}`)}
+        onClick={() => navigate(`/movie/${props.id}`)}
         data-testid="thumb-image"
         className="w-1/2"
         src={
@@ -52,8 +52,7 @@ const MovieCard = ({ isListScreen, ...props }) => {
         alt="Sunset in the mountains"
       />
       {/* Clicking on details section takes to movie page */}
-      <div 
-      onClick={() => navigate(`/movie/${props.id}`)} className="p-4">
+      <div onClick={() => navigate(`/movie/${props.id}`)} className="p-4">
         <div>
           <div className="font-bold text-sm mb-2 line-clamp-2">
             {props.title}
@@ -61,19 +60,19 @@ const MovieCard = ({ isListScreen, ...props }) => {
           <p className="text-gray-700 text-xs line-clamp-4">{props.overview}</p>
         </div>
 
-{/* Original language */}
+        {/* Original language */}
         <div className="pt-2">
           <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 mr-2 mb-2">
             Lang: {props.original_language}
           </span>
         </div>
 
-{/* Popularity */}
+        {/* Popularity */}
         <div className="pt-2 basis-1/5 flex flex-row">
           <AiFillStar color="gold" />
           <div className="text-xs">{props.popularity}</div>
         </div>
-{/* Release date */}
+        {/* Release date */}
         <div className="pt-2 basis-1/5 flex flex-row text-xs">
           {props.release_date}
         </div>

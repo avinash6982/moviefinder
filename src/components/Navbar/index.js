@@ -6,9 +6,14 @@ import { useLocation, useNavigate } from "react-router-dom";
 const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { items } = useSelector((state) => state.myList);  
+  const { items } = useSelector((state) => state.myList);
 
-  const generatePathTitle = () =>  location.pathname === "/" ? "Home" : location.pathname === '/mylist'? "My List": ""
+  const generatePathTitle = () =>
+    location.pathname === "/"
+      ? "Home"
+      : location.pathname === "/mylist"
+      ? "My List"
+      : "";
 
   return (
     <div className="px-6 pt-6 lg:px-8">
@@ -24,9 +29,9 @@ const Navbar = () => {
           </a>
         </div>
         <div className="flex lg:flex-1">
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900"> 
-          {/* Generate title for routes */}
-            {generatePathTitle()} 
+          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+            {/* Generate title for routes */}
+            {generatePathTitle()}
           </a>
         </div>
         <div className="justify-end">

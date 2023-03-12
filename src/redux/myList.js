@@ -6,7 +6,7 @@ export const myListSlice = createSlice({
     items: [],
     itemIds: [],
   },
-  reducers: { 
+  reducers: {
     addToList: (state, action) => {
       let newList = [...state.items, action.payload];
       state.items = newList;

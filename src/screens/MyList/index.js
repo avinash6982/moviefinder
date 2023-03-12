@@ -1,15 +1,15 @@
-import React  from "react"; 
+import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
- 
+
 import MovieCard from "../../components/Cards/MovieCard";
 
-const MyList = () => { 
-  const { items } = useSelector((state) => state.myList); 
+const MyList = () => {
+  const { items } = useSelector((state) => state.myList);
 
   return (
-    <main> 
-      <div className="relative px-6 lg:px-8"> 
+    <main>
+      <div className="relative px-6 lg:px-8">
         {items?.length > 0 ? (
           <>
             <div className="mx-auto max-w-xxl pt-5">

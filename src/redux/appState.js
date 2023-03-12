@@ -6,6 +6,7 @@ export const appStateSlice = createSlice({
     offline: false,
   },
   reducers: {
+    // mark app as offline
     toggleOffline: (state, action) => {
       state.offline = action.payload;
     },

@@ -6,10 +6,7 @@ const SortOptionButton = ({ setSortOption, sortOptions }) => (
       onChange={(e) => setSortOption(e.target.value)}
       id="countries"
       className="bg-light border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
-    >
-      <option onClick={() => setSortOption("")} selected>
-        Sort by
-      </option>
+    > 
       {sortOptions.map((option, index) => (
         <option key={index} value={option}>
           {option}

@@ -6,8 +6,8 @@ import debounce from "lodash.debounce";
 import SearchInput from "./components/SearchInput";
 import MovieCard from "../../components/Cards/MovieCard";
 import SortOptionButton from "./components/SortOptionButton";
-import { fetchDiscover, searchResults } from "./api";
 import Pagination from "../../components/Pagination";
+import { fetchDiscover, searchResults } from "./api";
 
 const HomeScreen = () => {
   const [sortOption, setSortOption] = useState("release_date.asc");
@@ -15,6 +15,8 @@ const HomeScreen = () => {
   const [searchPage, setSearchPage] = useState(1);
   const [discoverPage, setDiscoverPage] = useState(1);
 
+  //react-query function for fetching discover items based on page numbers and sort option
+  //selects and return data object from result after is success
   const discoverItemsQuery = useQuery(
     ["discover", sortOption, discoverPage],
     () => fetchDiscover({ sort_by: sortOption, page: discoverPage }),
@@ -26,6 +28,9 @@ const HomeScreen = () => {
     }
   );
 
+  //react-query function for searching items based on page numbers
+  //runs only when searchText length is > 0
+  //selects and return data object from result after is success
   const searchQuery = useQuery(
     ["searchResults", searchPage],
     () => searchResults({ query: searchText, page: searchPage }),
@@ -37,20 +42,25 @@ const HomeScreen = () => {
     }
   );
 
+  //debounce searchinput, for delayed search
+  //to avoid bulk api calls on searching
   const debouncedResults = useMemo(() => {
     return debounce((text) => setSearchText(text), 300);
   }, []);
 
+  //cleanup
   useEffect(() => {
     return () => {
       debouncedResults.cancel();
     };
   });
 
+  //refetch search query when searchText changed
   useEffect(() => {
     searchQuery.refetch();
   }, [searchText]);
 
+  //sort options
   const sortOptions = [
     "release_date.asc",
     "popularity.asc",
@@ -67,6 +77,7 @@ const HomeScreen = () => {
         </div>
       </div>
       <div className="relative px-6 lg:px-8">
+        {/* Loading state indicator */}
         {searchQuery.isLoading ||
           (discoverItemsQuery.isLoading && (
             <div className="mx-auto flex flex-row justify-center">

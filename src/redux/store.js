@@ -21,6 +21,7 @@ const rootReducer = combineReducers({
   myList: myListReducer,
 });
 
+//Persist redux
 const persistConfig = {
   key: "root",
   version: 1,

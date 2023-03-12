@@ -1,17 +1,21 @@
 import React  from "react"; 
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { useQuery } from "react-query";
  
 import MovieCard from "../../components/Cards/MovieCard";
-import {fetchMovieDetails} from "./api"
 import { getFullImageUrl } from "../../utils/utils";
-import { BsLink } from "react-icons/bs";
+import { BsCheck, BsLink, BsPlus } from "react-icons/bs";
+import { addToList, removeFromList } from "../../redux/myList";
+import {fetchMovieDetails} from "./api"
 
 const MovieDetails = () => { 
+  const dispatch = useDispatch();
   const {movieId} = useParams();
-  const { items } = useSelector((state) => state.myList); 
-
+  const { items, itemIds } = useSelector((state) => state.myList);  
+  
+  //react-query function for movieDetails based on movie id
+  //runs only when movieId is not null 
   const {data, isSuccess} = useQuery(["movieDetails", movieId], () => fetchMovieDetails(movieId), {
     enabled: !!movieId, 
   }) 
@@ -27,6 +31,21 @@ const MovieDetails = () => {
       style={{backgroundImage: `url(${getFullImageUrl(data.data?.backdrop_path)})`, backgroundSize: 'cover'}}
       className="mx-auto max-w-xxl mb-5 rounded overflow-hidden grid grid-cols-3 gap-4 backdrop-blur-md">
         <div className="col-span-3 sm:col-span-3 xs:col-span-3 md:col-span-1 lg:col-span-1 grid place-content-center p-5">
+           {itemIds.includes(data?.data?.id) ? (
+        <div
+          onClick={() => dispatch(removeFromList(data?.data?.id))}
+          className="absolute bg-white bg-opacity-60 hover:bg-opacity-80 rounded left-2 bottom-2 p-1 flex flex-row pr-3"
+        > 
+            <BsCheck color="#8C1F08" size={30} /> Already in your list
+        </div>
+      ) : (
+        <div
+          onClick={() => dispatch(addToList(data?.data))}
+          className="absolute bg-white bg-opacity-60 hover:bg-opacity-80 rounded left-2 bottom-2 p-1 flex flex-row pr-3"
+        >
+          <BsPlus color="#8C1F08" size={30} /> Add to your list
+        </div>
+      )}
         <img src={`${getFullImageUrl(data.data?.poster_path)}`} className="h-72 rounded" />
       </div>
       <div className="col-span-3 sm:col-span-3 xs:col-span-3 md:col-span-2 lg:col-span-2 flex flex-col bg-white m-5 bg-opacity-80 rounded p-5">

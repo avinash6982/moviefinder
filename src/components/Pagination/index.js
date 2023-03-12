@@ -6,8 +6,7 @@ import {
   BiArrowFromRight,
 } from "react-icons/bi";
 
-const Pagination = ({ currentPage, setPage, maxPage }) => {
-  return (
+const Pagination = ({ currentPage, setPage, maxPage }) =>  
     <>
       <div className="mx-auto max-w-xxl pt-5 text-xl">
         <div className="flex flex-row justify-center">
@@ -51,7 +50,6 @@ const Pagination = ({ currentPage, setPage, maxPage }) => {
       <div className="mx-auto max-w-xxl pb-5 text-md flex flex-row justify-center">
         Showing page {currentPage} of {maxPage < 500 ? maxPage : 500}
       </div>
-    </>
-  );
-};
+    </> 
+    
 export default Pagination;

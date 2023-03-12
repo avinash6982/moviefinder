@@ -6,6 +6,7 @@ export const discoverSlice = createSlice({
     items: [],
   },
   reducers: {
+    //Add items to discover, show when app is offline
     updateDiscover: (state, action) => {
       state.items = [...state.items, action.payload];
     },

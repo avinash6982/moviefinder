@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
-  const { items } = useSelector((state) => state.myList);
+  const { items } = useSelector((state) => state.myList);  
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -22,8 +22,8 @@ const Navbar = () => {
           </a>
         </div>
         <div className="flex lg:flex-1">
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-            {location.pathname === "/" ? "Home" : "My List"}
+          <a href="#" className="text-sm font-semibold leading-6 text-gray-900"> 
+            {location.pathname === "/" ? "Home" : location.pathname === '/mylist'? "My List": ""} 
           </a>
         </div>
         <div className="justify-end">

@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import HomeScreen from "./screens/HomeScreen";
 import PageNotFound from "./screens/PageNotFound";
 import MyList from "./screens/MyList";
+import MovieDetails from "./screens/MovieDetails"
 
 const appRoutes = [
   {
@@ -13,6 +14,10 @@ const appRoutes = [
   {
     path: "mylist",
     component: <MyList />,
+  },
+  {
+    path: "movie/:movieId",
+    component: <MovieDetails />,
   },
 ];
 

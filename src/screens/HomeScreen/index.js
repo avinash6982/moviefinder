@@ -78,7 +78,7 @@ const HomeScreen = () => {
             <div className="mx-auto max-w-xxl pb-5 text-xl flex flex-row justify-center">
               {searchQuery.data.results.length > 0 ? (
                 <>
-                  Showing results for: <strong>{searchText}</strong>
+                  Showing results for:<strong>{searchText}</strong>
                 </>
               ) : (
                 <>

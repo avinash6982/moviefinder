@@ -34,9 +34,11 @@ const Navbar = () => {
           >
             <BsBookmark size={25} />
             <span className="sr-only">My List</span>
-            <div className="absolute inline-flex items-center justify-center w-6 h-6 text-sm font-bold text-white bg-red-500 border-white rounded-full -top-2 -right-2 dark:border-gray-900">
-              {items.length}
-            </div>
+            {items.length > 0 && (
+              <div className="absolute inline-flex items-center justify-center w-6 h-6 text-sm font-bold text-white bg-red-500 border-white rounded-full -top-2 -right-2 dark:border-gray-900">
+                {items.length}
+              </div>
+            )}
           </button>
         </div>
       </nav>

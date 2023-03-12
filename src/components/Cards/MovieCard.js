@@ -1,26 +1,38 @@
 import React from "react";
 import { AiFillStar } from "react-icons/ai";
-import { BsPlus } from "react-icons/bs";
-import { useDispatch } from "react-redux";
+import { BsPlus, BsCheck, BsX } from "react-icons/bs";
+import { useDispatch, useSelector } from "react-redux";
 
-import { addToList } from "../../redux/myList";
+import { addToList, removeFromList } from "../../redux/myList";
 
 import { getFullImageUrl } from "../../utils/utils";
 
-const MovieCard = (props) => {
+const MovieCard = ({ isListScreen, ...props }) => {
   const dispatch = useDispatch();
+  const { itemIds } = useSelector((state) => state.myList);
 
   return (
     <div className="rounded overflow-hidden shadow-lg flex flex-row relative">
-      <div
-        onClick={() => dispatch(addToList(props))}
-        className="absolute bg-white bg-opacity-60 hover:bg-opacity-80 rounded left-2 bottom-2 p-1"
-      >
-        <BsPlus color="#8C1F08" size={30} />
-      </div>
-      {/* <div className="absolute bg-white bg-opacity-60 hover:bg-opacity-80 rounded left-2 bottom-2 p-1">
-    <BsCheck color="#8C1F08" size={30} />
-  </div> */}
+      {itemIds.includes(props.id) ? (
+        <div
+          onClick={() => dispatch(removeFromList(props.id))}
+          className="absolute bg-white bg-opacity-60 hover:bg-opacity-80 rounded left-2 bottom-2 p-1"
+        >
+          {isListScreen ? (
+            <BsX color="#8C1F08" size={30} />
+          ) : (
+            <BsCheck color="#8C1F08" size={30} />
+          )}
+        </div>
+      ) : (
+        <div
+          onClick={() => dispatch(addToList(props))}
+          className="absolute bg-white bg-opacity-60 hover:bg-opacity-80 rounded left-2 bottom-2 p-1"
+        >
+          <BsPlus color="#8C1F08" size={30} />
+        </div>
+      )}
+
       <img
         data-testid="thumb-image"
         className="w-1/2"

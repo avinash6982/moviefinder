@@ -4,15 +4,17 @@ export const myListSlice = createSlice({
   name: "myList",
   initialState: {
     items: [],
+    itemIds: [],
   },
   reducers: {
     addToList: (state, action) => {
-      state.items = [...state.items, action.payload];
+      let newList = [...state.items, action.payload];
+      state.items = newList;
+      state.itemIds = newList.map((listItem) => listItem.id);
     },
     removeFromList: (state, action) => {
-      state.items = state.items.filter(
-        (item) => item["1. symbol"] !== action.payload
-      );
+      state.items = state.items.filter((item) => item.id !== action.payload);
+      state.itemIds = state.itemIds.filter((item) => item !== action.payload);
     },
   },
 });
